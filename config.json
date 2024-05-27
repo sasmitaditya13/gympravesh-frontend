@@ -1,0 +1,8 @@
+{
+    "nomenclature": {
+        "name": "gympravesh",
+        "verboseName": "Gympravesh"
+    },
+    "baseUrl": "/gympravesh",
+    "source": "gympravesh/src/index"
+}
