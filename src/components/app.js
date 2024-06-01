@@ -7,6 +7,8 @@ import { AppHeader, AppFooter, AppMain, getTheme } from 'formula_one'
 
 import main from 'formula_one/src/css/app.css'
 import blocks from '../css/app.css'
+import Login from './login.js'
+import Dashboard from './dashboard.js'
 
 class App extends Component {
   render () {
@@ -25,36 +27,11 @@ class App extends Component {
 
     return (
       <div styleName='main.app'>
-        <AppHeader appName='gympravesh' mode='app' />
         <AppMain>
           <div styleName='main.app-main'>
             <Scrollbars autoHide>
-              <Container styleName='blocks.content-div'>
-                <center>
-                  <Segment compact color={getTheme()}>
-                    <center>
-                      <h1>Congratulations!</h1>
-                      <p styleName='blocks.logo'>
-                        <img src='/branding/site/logo.svg' />
-                      </p>
-                      <p>
-                        You have successfully initiated <em>gympravesh</em> and
-                        taken the first step to building your
-                        <strong> Omniport</strong> app.
-                      </p>
-                      <p>
-                        Edit <code>./src/components/app.js</code> and make this
-                        app do magical things. We can't wait to see what you make.
-                      </p>
-                      <p>
-                        Greetings,
-                        <br />
-                        Team Omniport
-                      </p>
-                    </center>
-                  </Segment>
-                </center>
-              </Container>
+              
+              <Dashboard/>
             </Scrollbars>
           </div>
         </AppMain>

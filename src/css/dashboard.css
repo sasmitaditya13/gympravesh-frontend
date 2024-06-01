@@ -1,0 +1,165 @@
+.header{
+    display: flex;
+    height: 8rem;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #F0F8FF;
+    margin-bottom: 3.5rem;
+}
+
+.logo_container{
+    position: relative;
+    left: 8rem;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    width: 40rem;
+}
+
+.signout_container{
+    position: relative;
+    right: 8rem;
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.dashtext{
+    position: relative;
+    left: 1.5rem;
+    font-family: lato;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.hello{
+    align-items: center;
+    text-align: center;
+}
+
+.dashboard{
+    font-family: lato;
+    font-weight: 700;
+    font-size: 3.5rem;
+    margin: 1rem;
+}
+
+.signout{
+    font-size: 2rem;
+    margin-right: 0.5rem;
+}
+
+.username{
+    font-size: 2rem;
+    margin: 2rem;
+}
+
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F0F8FF;
+    border-radius: 4rem;
+    padding: 2rem;
+    width: 1000px;
+}
+
+.entrylogs{
+    background-color: white;
+    padding: 3rem;
+    border-radius: 2rem;
+}
+
+.entryheader{
+    display: flex;
+    font: lato;
+    font-weight: 700;
+    font-size: 2.75rem;
+    align-items: center;
+}
+
+.entrytable{
+    border-color: white;
+}
+
+.filter{
+    position: relative;
+    left: 1rem;
+}
+
+.filterpopup{
+    position: relative;
+    top: 2rem;
+    margin-bottom: 3.5rem;
+}
+
+.occupancycard{
+    background-color: white;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.visitscard{
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.chartscard{
+    background-color: white;
+    border-radius: 2rem;
+    bottom: 2rem;
+    height: 97.5%;
+    padding: 2rem;
+}
+
+.timedistribution{
+    font-size: 2rem;
+    font: lato;
+    font-weight: 700;
+}
+
+.timeheader{
+    margin-bottom: 0rem;
+}
+
+.daytime{
+    font-size: 2rem;
+    font-weight: 700;
+    opacity: 0.4;
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.occupancyopacity{
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.4;
+    margin-bottom: 0.5rem;
+}
+.occupancyheader{
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font:lato;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 3rem;
+}
+
+.opacitytext{
+    padding-top: 0.5rem;
+    font: lato;
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.4;
+}
+
+.mostleast{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
