@@ -8,22 +8,11 @@ import { AppHeader, AppFooter, AppMain, getTheme } from 'formula_one'
 import main from 'formula_one/src/css/app.css'
 import dash from '../css/dashboard.css'
 
-
-const tabledata = [
-    {id:"1",enrollment:"22323036" , name:"Sasmit", deg:"BS-MS", bhawan:"JB", in:"16:00", out:"---", active:"IN"},
-    {id:"2",enrollment:"22323036" , name:"Sasmit", deg:"BS-MS", bhawan:"JB", in:"16:00", out:"---", active:"IN"},
-    {id:"3",enrollment:"22323036" , name:"Sasmit", deg:"BS-MS", bhawan:"JB", in:"16:00", out:"---", active:"OUT"},
-    {id:"4",enrollment:"22323036" , name:"Sasmit", deg:"BS-MS", bhawan:"JB", in:"16:00", out:"---", active:"IN"},
-    {id:"5",enrollment:"22323036" , name:"Sasmit", deg:"BS-MS", bhawan:"JB", in:"16:00", out:"---", active:"IN"}
-]
-
-class Entrytable extends Component{
-    render()
-    {
+function Entrytable(props) {
         return(
             <Table unstackable className={dash.entrytable} class="ui very basic table">
                     <TableBody>
-                    {tabledata.map((value, key) => {
+                    {props.getLog.data.map((value, key) => {
                         return (<>
                         {value.active == "IN"?
                         <TableRow positive key={key}>
@@ -32,8 +21,8 @@ class Entrytable extends Component{
                             <TableCell width={8}>{value.name}</TableCell>
                             <TableCell>{value.deg}</TableCell>
                             <TableCell>{value.bhawan}</TableCell>
-                            <TableCell>{value.in}</TableCell>
-                            <TableCell>{value.out}</TableCell>
+                            <TableCell>{value.entry}</TableCell>
+                            <TableCell>{value.exit}</TableCell>
                             <TableCell>{value.active}</TableCell>
                         </TableRow>:
                         <TableRow negative key={key}>
@@ -42,8 +31,8 @@ class Entrytable extends Component{
                             <TableCell>{value.name}</TableCell>
                             <TableCell>{value.deg}</TableCell>
                             <TableCell>{value.bhawan}</TableCell>
-                            <TableCell>{value.in}</TableCell>
-                            <TableCell>{value.out}</TableCell>
+                            <TableCell>{value.entry}</TableCell>
+                            <TableCell>{value.exit}</TableCell>
                             <TableCell>{value.active}</TableCell>
                         </TableRow>}
                         </>
@@ -53,6 +42,9 @@ class Entrytable extends Component{
                 </Table>
         )
     }
-}
 
-export default Entrytable
+function mapStateToProps(state) {
+    return { getLog: state.getLog };
+} 
+
+export default connect(mapStateToProps)(Entrytable)

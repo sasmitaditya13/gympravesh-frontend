@@ -21,9 +21,13 @@ export function visitsAPI(){
 }
 
 export function chartsAPI(){
-    return '';
+    return '/api/gympravesh/traffic';
 }
 
 export function entrylogAPI(){
-    return '';
+    return '/api/gympravesh/log2';
+}
+
+export function whoami(){
+    return '/kernel/who_am_i'
 }

@@ -4,13 +4,13 @@ import { GET_ENTRY_LOG_SUCCESS, GET_ENTRY_LOG_FAILURE } from "../constants/actio
 
 import { entrylogAPI } from "../urls";
 
-export const getToken = (token , time) => {
+export const getEntry = (token , date, filters) => {
   return (dispatch) => {
-    axios.get(`${entrylogAPI()}` , {headers:{'authorizatoin':token} , params:{'time':time}})
+    axios.get(`${entrylogAPI()}` , {headers:{'authorization':token} , params:{'filter':""}})
     .then((res) => {
         dispatch({
           type: GET_ENTRY_LOG_SUCCESS,
-          payload: res.data,
+          payload: JSON.parse(res.data),
         });
     })
     .catch((err) => {

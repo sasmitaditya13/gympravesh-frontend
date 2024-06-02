@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { useEffect } from 'react'
 import { Segment, Container, Grid, GridColumn, Header, Button, Icon, Popup, GridRow } from 'semantic-ui-react'
+import axios from "axios"
 
 import { AppHeader, AppFooter, AppMain, getTheme } from 'formula_one'
 
@@ -13,11 +14,17 @@ import dash from '../css/dashboard.css'
 import LineChart from './chart'
 import DateTimeForm from './calender'
 import { getOccupancy } from '../actions/getOccupancy'
+import { getEntry } from '../actions/getEntrylog'
+import { getCharts } from '../actions/getCharts'
+import { whoami } from '../urls'
+import FilterOptions from './filter'
 
 function Dashboard(props) {
-        console.log(props.getdata.data.total_occupancy)
         useEffect(() => {
+            axios.get(`${whoami()}`)
             props.getOccupancy("2f626ee5-5e0e-4b24-b43e-78cf88df441c")
+            props.getEntry("2f626ee5-5e0e-4b24-b43e-78cf88df441c")
+            props.getCharts("2f626ee5-5e0e-4b24-b43e-78cf88df441c")
         },[])
         return(
         <>
@@ -74,14 +81,14 @@ function Dashboard(props) {
                         <div className={dash.chartscard}>
                             <div className={dash.timeheader}>
                             <div className={dash.timedistribution}><Icon name='chart bar'></Icon>Time Distribution</div>
-                            {/* ADD menu */}
+                            
                             </div>
                             <div className={dash.daytime}>Morning</div>
                             <div className={dash.occupancyopacity}>Occupany</div>
-                            <LineChart></LineChart>
+                            <LineChart ugdata = {props.getchart.male.morning.ug} pgdata={props.getchart.male.morning.pg} label={props.getchart.morningLabel}></LineChart>
                             <div className={dash.daytime}>Evening</div>
                             <div className={dash.occupancyopacity}>Occupancy</div>
-                            <LineChart></LineChart>
+                            <LineChart ugdata = {props.getchart.male.evening.ug} pgdata={props.getchart.male.evening.pg} label={props.getchart.eveningLabel}></LineChart>
                             <div style={{marginTop:48}}>
                             <Grid columns='equal'>
                                 <GridColumn>
@@ -124,16 +131,7 @@ function Dashboard(props) {
                     <div>Entry Logs</div>
                 </div>
                 <div className={dash.filterpopup}>
-                <Popup
-                    content={
-                    <>
-                        LEFT TO ADD CHECKBOX
-                    </>
-                    }
-                    on='click'
-                    position='bottom center'
-                    trigger={<Button basic circular>Filter <Icon name='sort down' className={dash.filter}></Icon></Button>}
-                />
+                <FilterOptions></FilterOptions>
                 </div>
                 <Entrytable></Entrytable>
             </div>
@@ -144,14 +142,19 @@ function Dashboard(props) {
     }
 
 function mapStateToProps(state) {
-    console.log(state)
-    return {  getdata: state.getdata };
+    return {  getdata: state.getdata, getLog: state.getLog, getchart: state.getchart };
 } 
 
 const mapDispatchToProps = dispatch => {
     return {
       getOccupancy: (token) => {
         dispatch(getOccupancy(token))
+      },
+      getEntry: (token) => {
+        dispatch(getEntry(token))
+      },
+      getCharts: (token) =>{
+        dispatch(getCharts(token))
       }
     }
 }

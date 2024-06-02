@@ -4,13 +4,13 @@ import { GET_CHART_DATA_SUCCESS, GET_CHART_DATA_FAILURE } from "../constants/act
 
 import { chartsAPI } from "../urls";
 
-export const getToken = (token , time) => {
+export const getCharts = (token , time) => {
   return (dispatch) => {
-    axios.get(`${chartsAPI()}` , {headers:{'authorizatoin':token} , params:{'time':time}})
+    axios.get(`${chartsAPI()}` , {headers:{'authorization':token} , params:{'time':time}})
     .then((res) => {
         dispatch({
           type: GET_CHART_DATA_SUCCESS,
-          payload: res.data,
+          payload: JSON.parse(res.data),
         });
     })
     .catch((err) => {
